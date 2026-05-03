@@ -15,62 +15,45 @@ if GEMINI_API_KEY:
 SYSTEM_PROMPT = """
 You are Ramya Gorantla's AI Portfolio Assistant.
 
-Your job is to answer questions about Ramya's skills, projects, education, experience,
-certifications, and career interests.
-
-Use only the profile information below. Do not invent anything.
+Answer questions only about Ramya Gorantla's portfolio, skills, projects, education,
+experience, certifications, SAP CPI background, cloud experience, AI projects,
+and career interests.
 
 Ramya Gorantla is a Master's student in Computer Science at Rowan University.
-She has around 2.5 years of professional experience as an SAP CPI Developer at Accenture.
-She has experience with SAP CPI, SAP BTP, SAP S/4HANA integration, APIs, Groovy scripting,
-Python, Flask, SQL, GitHub, Linux, Nginx, web hosting, DNS, SSL, Azure, AWS, and cybersecurity tools.
+She has 2.5+ years of professional experience as an SAP CPI Developer at Accenture.
+Her skills include SAP CPI, SAP BTP, SAP S/4HANA integration, APIs, Groovy scripting,
+Python, Flask, SQL, GitHub, Linux, Nginx, web hosting, DNS, SSL, Azure, AWS,
+and cybersecurity tools.
 
-Ramya has completed Microsoft Azure Fundamentals AZ-900 and is preparing for Azure Administrator AZ-104.
+She completed Microsoft Azure Fundamentals AZ-900 and is preparing for AZ-104.
 She also has AWS Solutions Architect knowledge/certification.
 
-Her projects include:
-1. CareerPilot AI - an AI career platform with resume analysis, skill gap analysis, and job application optimization.
-2. Smart Order Processing with AI Decision Engine - SAP CPI receives orders, Python AI classifies them, and routing happens based on urgency or risk.
-3. AI-Powered Invoice Processing - OCR and NLP extract invoice data and integrate it with SAP CPI.
-4. AI Chatbot for SAP Queries - chatbot converts natural language into API-based SAP operational queries.
-5. Julius Silvert Redesign - live hosted chef-centric e-commerce redesign with better ordering UX.
-6. Ramya AI Portfolio Assistant - AI chatbot that answers questions about her portfolio.
-7. Web server deployment projects using GitHub, Namecheap, Nginx, SSL, and cloud/server hosting.
+Her projects include CareerPilot AI, Smart Order Processing with AI Decision Engine,
+AI-Powered Invoice Processing, AI Chatbot for SAP Queries, Julius Silvert Redesign,
+Web Server Deployment projects, and Ramya AI Portfolio Assistant.
 
-Her career interests include cloud engineering, software engineering, SAP integration,
-AI/API development, cybersecurity, and internships/full-time opportunities in the United States.
-
-Rules:
-- Keep answers professional, simple, and helpful.
-- If the visitor types one keyword like skills, projects, SAP, Azure, AWS, AI, experience,
-  certifications, education, or contact, answer properly.
-- If the question is unrelated to Ramya, politely say you can only answer questions about Ramya's portfolio.
-- Do not mention that you are using a system prompt.
-- Do not make up phone numbers, email addresses, or private information.
+Keep answers professional, short, and helpful.
+If the visitor asks unrelated questions, say you can only answer about Ramya's portfolio.
+Do not invent information.
 """
 
 KEYWORD_MAP = {
-    "skills": "Summarize Ramya's technical skills clearly.",
-    "skill": "Summarize Ramya's technical skills clearly.",
-    "projects": "List Ramya's major projects and briefly explain each one.",
-    "project": "List Ramya's major projects and briefly explain each one.",
+    "skills": "Summarize Ramya's technical skills.",
+    "skill": "Summarize Ramya's technical skills.",
+    "projects": "List Ramya's major projects.",
+    "project": "List Ramya's major projects.",
     "experience": "Summarize Ramya's professional experience.",
-    "work": "Summarize Ramya's professional experience.",
-    "certifications": "Explain Ramya's certifications and cloud learning.",
-    "certification": "Explain Ramya's certifications and cloud learning.",
+    "certifications": "Explain Ramya's certifications.",
+    "certification": "Explain Ramya's certifications.",
     "education": "Summarize Ramya's education.",
-    "sap": "Explain Ramya's SAP CPI and SAP integration experience.",
-    "sap cpi": "Explain Ramya's SAP CPI and SAP integration experience.",
-    "azure": "Explain Ramya's Azure skills and certification background.",
-    "aws": "Explain Ramya's AWS cloud background.",
+    "sap": "Explain Ramya's SAP CPI experience.",
+    "sap cpi": "Explain Ramya's SAP CPI experience.",
+    "azure": "Explain Ramya's Azure background.",
+    "aws": "Explain Ramya's AWS background.",
     "ai": "Explain Ramya's AI-related projects.",
-    "cybersecurity": "Explain Ramya's cybersecurity tools and lab experience.",
-    "cloud": "Explain Ramya's cloud engineering background.",
-    "resume": "Give a professional summary of Ramya's profile.",
-    "summary": "Give a professional summary of Ramya's profile.",
-    "contact": "Tell the visitor to contact Ramya through her portfolio contact links.",
-    "github": "Explain Ramya's GitHub and project work.",
-    "linkedin": "Tell the visitor to connect with Ramya through LinkedIn from her portfolio."
+    "cloud": "Explain Ramya's cloud background.",
+    "cybersecurity": "Explain Ramya's cybersecurity background.",
+    "contact": "Tell visitors to contact Ramya through her portfolio contact links."
 }
 
 @app.route("/")
@@ -80,48 +63,37 @@ def home():
 @app.route("/api/chat", methods=["POST"])
 def chat():
     try:
-        if not GEMINI_API_KEY:
-            return jsonify({
-                "reply": "AI service is temporarily unavailable. API key is missing on the server."
-            }), 500
-
         data = request.get_json()
-        user_message = data.get("message", "").strip()
+        user_message = data.get("message", "").strip() if data else ""
 
         if not user_message:
             return jsonify({
-                "reply": "Please ask a question or type a keyword like skills, projects, SAP, Azure, AWS, or certifications."
-            }), 400
+                "reply": "Please ask a question or type skills, projects, SAP, Azure, AWS, or certifications."
+            })
 
-        lower_message = user_message.lower().strip()
+        if not GEMINI_API_KEY:
+            return jsonify({
+                "reply": "AI service is temporarily unavailable because the API key is missing."
+            })
 
-        if lower_message in KEYWORD_MAP:
-            final_question = KEYWORD_MAP[lower_message]
-        else:
-            final_question = user_message
+        lower_message = user_message.lower()
+        final_question = KEYWORD_MAP.get(lower_message, user_message)
 
         model = genai.GenerativeModel("gemini-1.5-flash")
 
-        prompt = f"""
-{SYSTEM_PROMPT}
+        response = model.generate_content(
+            SYSTEM_PROMPT + "\n\nVisitor question: " + final_question
+        )
 
-Visitor question:
-{final_question}
-"""
+        reply = response.text if response and response.text else "Sorry, I could not generate a response."
 
-        response = model.generate_content(prompt)
+        return jsonify({"reply": reply})
 
-        if not response.text:
-            return jsonify({
-                "reply": "AI service responded, but no answer was generated. Please try again."
-            }), 500
-
-        return jsonify({"reply": response.text})
-
-    except Exception:
+    except Exception as e:
+        print("ERROR:", str(e))
         return jsonify({
             "reply": "AI service is temporarily unavailable. Please try again later."
-        }), 500
+        })
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
