@@ -195,7 +195,7 @@ body {
   display: block;
 }
 
-/* ===== CHATBOT (RIGHT SIDE SLIDE) ===== */
+/* ===== RIGHT SIDE, PREVIOUS POPUP STYLE ===== */
 .chatbot-popup {
   position: fixed;
   top: 50%;
@@ -212,7 +212,6 @@ body {
   transition: transform 0.35s ease;
 }
 
-/* SHOW */
 .chatbot-popup.show-chatbot {
   transform: translateY(-50%) translateX(0);
 }
@@ -229,7 +228,6 @@ body {
   font-weight: 700;
 }
 
-/* HEADER BUTTONS */
 .chatbot-header-actions {
   display: flex;
   gap: 10px;
@@ -252,15 +250,14 @@ body {
 
 /* ===== MAXIMIZE ===== */
 .chatbot-popup.chatbot-maximized {
-  width: 85vw;
-  height: 85vh;
+  width: 85vw !important;
+  height: 85vh !important;
   right: 50%;
   transform: translate(50%, -50%) !important;
 }
 
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
-
   .chatbot-popup {
     width: 94vw;
     height: 80vh;
