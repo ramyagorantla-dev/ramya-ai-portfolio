@@ -121,3 +121,12 @@ h1 {
   color: #94a3b8;
   font-size: 13px;
 }
+
+.chatbot-popup.chatbot-maximized {
+  width: 90vw !important;
+  height: 90vh !important;
+  top: 50% !important;
+  right: 50% !important;
+  transform: translate(50%, -50%) !important;
+  border-radius: 20px !important;
+}
