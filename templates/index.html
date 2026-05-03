@@ -73,6 +73,9 @@ async function sendMessage() {
         });
 
         const data = await response.json();
+        if (data.redirect) {
+  window.open(data.redirect, "_blank");
+}
 
         const loadingMessage = document.querySelector(".loading");
         if (loadingMessage) {
