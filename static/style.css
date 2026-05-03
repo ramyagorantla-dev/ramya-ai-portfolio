@@ -75,7 +75,6 @@ body {
   margin: 0 auto;
 }
 
-/* ===== TAG ===== */
 .tag {
   display: inline-block;
   background: #eaf2ff;
@@ -84,7 +83,6 @@ body {
   margin-bottom: 25px;
 }
 
-/* ===== TEXT ===== */
 .hero h1 {
   font-size: 54px;
   margin-bottom: 10px;
@@ -145,7 +143,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* ===== CONTACT ===== */
 .contact-links {
   display: flex;
   flex-direction: column;
@@ -164,7 +161,7 @@ body {
   background: white;
 }
 
-/* ===== FLOATING BUTTON ===== */
+/* ===== FLOATING CHAT BUTTON ===== */
 .floating-ai-button {
   position: fixed;
   right: 25px;
@@ -173,7 +170,7 @@ body {
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   border: 2px solid white;
-  padding: 15px 22px;
+  padding: 15px 24px;
   border-radius: 999px;
   font-weight: 700;
   font-size: 16px;
@@ -195,20 +192,20 @@ body {
   display: block;
 }
 
-/* ===== RIGHT SIDE, PREVIOUS POPUP STYLE ===== */
+/* ===== RIGHT SIDE CHATBOT - OLD STYLE POPUP ===== */
 .chatbot-popup {
   position: fixed;
   top: 50%;
-  right: 25px;
-  transform: translateY(-50%) translateX(120%);
-  width: 430px;
-  height: 620px;
+  right: 28px;
+  width: 470px;
+  height: 650px;
   background: #0f172a;
-  border-radius: 20px;
+  border-radius: 22px;
   overflow: hidden;
   z-index: 999998;
   box-shadow: 0 25px 70px rgba(0,0,0,0.45);
   border: 1px solid rgba(255,255,255,0.2);
+  transform: translateY(-50%) translateX(120%);
   transition: transform 0.35s ease;
 }
 
@@ -216,39 +213,41 @@ body {
   transform: translateY(-50%) translateX(0);
 }
 
-/* ===== HEADER ===== */
 .chatbot-header {
-  height: 58px;
+  height: 62px;
   background: linear-gradient(135deg, #2563eb, #7c3aed);
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 18px;
+  padding: 16px 20px;
   font-weight: 700;
+  font-size: 16px;
 }
 
 .chatbot-header-actions {
   display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 12px;
 }
 
 .chatbot-header-actions button {
   background: transparent;
   border: none;
   color: white;
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
+  line-height: 1;
 }
 
-/* ===== IFRAME ===== */
 .chatbot-frame {
   width: 100%;
-  height: calc(100% - 58px);
+  height: calc(100% - 62px);
   border: none;
+  background: #0f172a;
 }
 
-/* ===== MAXIMIZE ===== */
+/* ===== MAXIMIZED CHATBOT ===== */
 .chatbot-popup.chatbot-maximized {
   width: 85vw !important;
   height: 85vh !important;
@@ -256,12 +255,84 @@ body {
   transform: translate(50%, -50%) !important;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 600px) {
+/* ===== SKILLS PAGE CARDS ===== */
+.page-section {
+  padding: 50px 0;
+}
+
+.page-title {
+  font-size: 38px;
+  margin-bottom: 10px;
+}
+
+.page-subtitle {
+  font-size: 18px;
+  max-width: 900px;
+  margin-bottom: 25px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.skills-grid,
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.skill-card,
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.skill-card:hover,
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.skill-card h3,
+.card h3 {
+  margin-bottom: 10px;
+  color: #2563eb;
+}
+
+.skill-card p,
+.card p {
+  color: #334155;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 900px) {
+  .skills-grid,
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .chatbot-popup {
-    width: 94vw;
-    height: 80vh;
-    right: 3vw;
+    width: 440px;
+    right: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
   }
 
   .hero h1 {
@@ -272,14 +343,19 @@ body {
     font-size: 22px;
   }
 
-  .nav-container {
-    flex-direction: column;
-    gap: 12px;
+  .skills-grid,
+  .grid-3 {
+    grid-template-columns: 1fr;
   }
 
-  .nav-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 12px;
+  .chatbot-popup {
+    width: 94vw;
+    height: 82vh;
+    right: 3vw;
+  }
+
+  .chatbot-popup.chatbot-maximized {
+    width: 96vw !important;
+    height: 90vh !important;
   }
 }
