@@ -68,6 +68,7 @@ body {
 .hero-left {
   max-width: 900px;
   text-align: center;
+  margin: 0 auto;
 }
 
 .tag {
@@ -224,64 +225,11 @@ body {
   cursor: pointer;
 }
 
-.chatbot-messages {
-  flex: 1;
-  padding: 18px;
-  overflow-y: auto;
+.chatbot-frame {
+  width: 100%;
+  height: calc(100vh - 64px);
+  border: none;
   background: #0b1220;
-}
-
-.bot-message,
-.user-message {
-  padding: 13px 15px;
-  border-radius: 14px;
-  margin-bottom: 14px;
-  line-height: 1.5;
-  font-size: 15px;
-}
-
-.bot-message {
-  background: #111827;
-  border: 1px solid #334155;
-  color: #e5e7eb;
-  max-width: 85%;
-}
-
-.user-message {
-  background: #2563eb;
-  color: white;
-  max-width: 80%;
-  margin-left: auto;
-}
-
-.loading {
-  color: #93c5fd;
-}
-
-.chatbot-input-area {
-  display: flex;
-  gap: 10px;
-  padding: 14px;
-  background: #111827;
-  border-top: 1px solid #334155;
-}
-
-.chatbot-input-area input {
-  flex: 1;
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-}
-
-.chatbot-input-area button {
-  padding: 12px 16px;
-  border: none;
-  border-radius: 10px;
-  background: #2563eb;
-  color: white;
-  font-weight: 700;
-  cursor: pointer;
 }
 
 @media (max-width: 600px) {
