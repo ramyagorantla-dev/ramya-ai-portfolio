@@ -151,7 +151,7 @@ def chat():
     except Exception as e:
         print("FULL SERVER ERROR:", str(e))
         return jsonify({
-            "reply": f"Sorry, something went wrong. For support, please contact Ramya at {CONTACT_EMAIL}."
+            "reply": f"Sorry, something went wrong. For support, please contact Ramya at ramyagorantla2001@gmail.com."
         })
 
 @app.route("/health")
