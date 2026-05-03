@@ -1,3 +1,4 @@
+/* ===== RESET ===== */
 * {
   margin: 0;
   padding: 0;
@@ -5,12 +6,14 @@
   font-family: "Segoe UI", Arial, sans-serif;
 }
 
+/* ===== BODY ===== */
 body {
   background: linear-gradient(135deg, #eef6ff 0%, #dff1ff 35%, #f5ecff 100%);
   color: #10233d;
   line-height: 1.6;
 }
 
+/* ===== NAVBAR ===== */
 .navbar {
   width: 100%;
   background: white;
@@ -51,6 +54,7 @@ body {
   color: #2563eb;
 }
 
+/* ===== HERO ===== */
 .container {
   width: 90%;
   max-width: 1200px;
@@ -71,6 +75,7 @@ body {
   margin: 0 auto;
 }
 
+/* ===== TAG ===== */
 .tag {
   display: inline-block;
   background: #eaf2ff;
@@ -79,6 +84,7 @@ body {
   margin-bottom: 25px;
 }
 
+/* ===== TEXT ===== */
 .hero h1 {
   font-size: 54px;
   margin-bottom: 10px;
@@ -95,6 +101,7 @@ body {
   max-width: 850px;
 }
 
+/* ===== BUTTONS ===== */
 .hero-buttons {
   display: flex;
   justify-content: center;
@@ -115,6 +122,7 @@ body {
   color: white;
 }
 
+/* ===== INFO BOXES ===== */
 .quick-info {
   display: flex;
   justify-content: center;
@@ -137,6 +145,7 @@ body {
   margin-bottom: 10px;
 }
 
+/* ===== CONTACT ===== */
 .contact-links {
   display: flex;
   flex-direction: column;
@@ -155,6 +164,7 @@ body {
   background: white;
 }
 
+/* ===== FLOATING BUTTON ===== */
 .floating-ai-button {
   position: fixed;
   right: 25px;
@@ -171,6 +181,7 @@ body {
   box-shadow: 0 12px 35px rgba(37,99,235,0.4);
 }
 
+/* ===== OVERLAY ===== */
 .chat-overlay {
   position: fixed;
   inset: 0;
@@ -184,7 +195,7 @@ body {
   display: block;
 }
 
-/* RIGHT SIDE, SAME OLD STYLE */
+/* ===== CHATBOT (RIGHT SIDE SLIDE) ===== */
 .chatbot-popup {
   position: fixed;
   top: 50%;
@@ -201,10 +212,12 @@ body {
   transition: transform 0.35s ease;
 }
 
+/* SHOW */
 .chatbot-popup.show-chatbot {
   transform: translateY(-50%) translateX(0);
 }
 
+/* ===== HEADER ===== */
 .chatbot-header {
   height: 58px;
   background: linear-gradient(135deg, #2563eb, #7c3aed);
@@ -216,6 +229,7 @@ body {
   font-weight: 700;
 }
 
+/* HEADER BUTTONS */
 .chatbot-header-actions {
   display: flex;
   gap: 10px;
@@ -225,17 +239,18 @@ body {
   background: transparent;
   border: none;
   color: white;
-  font-size: 24px;
+  font-size: 22px;
   cursor: pointer;
 }
 
+/* ===== IFRAME ===== */
 .chatbot-frame {
   width: 100%;
   height: calc(100% - 58px);
   border: none;
 }
 
-/* MAXIMIZE */
+/* ===== MAXIMIZE ===== */
 .chatbot-popup.chatbot-maximized {
   width: 85vw;
   height: 85vh;
@@ -243,13 +258,14 @@ body {
   transform: translate(50%, -50%) !important;
 }
 
+/* ===== MOBILE ===== */
 @media (max-width: 600px) {
+
   .chatbot-popup {
     width: 94vw;
     height: 80vh;
     right: 3vw;
   }
-}
 
   .hero h1 {
     font-size: 38px;
