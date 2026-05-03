@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ramya AI Portfolio Assistant</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="page">
+        <div class="card">
+            <h1>Ramya AI Portfolio Assistant</h1>
+            <p class="subtitle">
+                Ask about my skills, projects, certifications, cloud experience, SAP background, or AI work.
+            </p>
+
+            <div class="quick-buttons">
+                <button onclick="quickAsk('skills')">Skills</button>
+                <button onclick="quickAsk('projects')">Projects</button>
+                <button onclick="quickAsk('SAP')">SAP</button>
+                <button onclick="quickAsk('Azure')">Azure</button>
+                <button onclick="quickAsk('AWS')">AWS</button>
+                <button onclick="quickAsk('certifications')">Certifications</button>
+            </div>
+
+            <div id="chat-box" class="chat-box">
+                <div class="bot-message">
+                    Hi, I’m Ramya’s AI Portfolio Assistant. Try typing “skills”, “projects”, “SAP”, “Azure”, “AWS”, or ask a full question.
+                </div>
+            </div>
+
+            <div class="input-row">
+                <input 
+                    type="text" 
+                    id="user-input" 
+                    placeholder="Ask about Ramya's skills, projects, or experience..."
+                    onkeydown="handleEnter(event)"
+                >
+                <button onclick="sendMessage()">Ask AI</button>
+            </div>
+
+            <p class="hint">
+                Example: “Is Ramya a good fit for cloud internships?” or just type “projects”.
+            </p>
+        </div>
+    </div>
+
+<script>
+async function sendMessage() {
+    const input = document.getElementById("user-input");
+    const chatBox = document.getElementById("chat-box");
+    const message = input.value.trim();
+
+    if (!message) {
+        return;
+    }
+
+    chatBox.innerHTML += `<div class="user-message">You: ${escapeHtml(message)}</div>`;
+    input.value = "";
+
+    chatBox.innerHTML += `<div class="bot-message loading">Ramya AI is thinking...</div>`;
+    chatBox.scrollTop = chatBox.scrollHeight;
+
+    try {
+        const response = await fetch("/api/chat", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message: message })
+        });
+
+        const data = await response.json();
+
+        const loadingMessage = document.querySelector(".loading");
+        if (loadingMessage) {
+            loadingMessage.remove();
+        }
+
+        chatBox.innerHTML += `<div class="bot-message">Ramya AI: ${escapeHtml(data.reply)}</div>`;
+    } catch (error) {
+        const loadingMessage = document.querySelector(".loading");
+        if (loadingMessage) {
+            loadingMessage.remove();
+        }
+
+        chatBox.innerHTML += `<div class="bot-message">AI service is temporarily unavailable. Please try again later.</div>`;
+    }
+
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
+function quickAsk(text) {
+    document.getElementById("user-input").value = text;
+    sendMessage();
+}
+
+function handleEnter(event) {
+    if (event.key === "Enter") {
+        sendMessage();
+    }
+}
+
+function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.innerText = text;
+    return div.innerHTML;
+}
+</script>
+
+</body>
+</html>
