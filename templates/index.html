@@ -1,117 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Ramya AI Portfolio Assistant</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/style.css?v=30">
-</head>
-<body>
+Ramya.
+About Experience Projects Skills Ask my AI
+☰
+Open to Software Engineering, Cloud & AI roles
 
-    <div class="page">
-        <div class="card">
-            <h1>Ramya AI Portfolio Assistant</h1>
+Hi, I'm Ramya Gorantla.
+Graduate Research Assistant · AI/LLM & RAG · Cloud
 
-            <p class="subtitle">
-                Ask about my skills, projects, certifications, cloud experience, SAP background, or AI work.
-            </p>
+MS Computer Science student at Rowan University and Graduate Research Assistant working on AI and medical imaging. I bring 3 years of enterprise SAP integration experience from Accenture, and I build AI applications with Python, LLMs and RAG.
 
-            <div class="quick-buttons">
-                <button onclick="quickAsk('skills')">Skills</button>
-                <button onclick="quickAsk('projects')">Projects</button>
-                <button onclick="quickAsk('SAP')">SAP</button>
-                <button onclick="quickAsk('Azure')">Azure</button>
-                <button onclick="quickAsk('AWS')">AWS</button>
-                <button onclick="quickAsk('certifications')">Certifications</button>
-            </div>
+Ask my AI assistant View projects
+LinkedIn GitHub Email
+3 yrsEnterprise SAP integration experience at Accenture
+3.9GPA · MS Computer Science, Rowan University
+3Certifications: AWS SA-Associate, Azure AZ-900, SAP
+IEEEMAPCON 2024 publication
+About
 
-            <div id="chat-box" class="chat-box">
-                <div class="bot-message">
-                    Hi, I’m Ramya’s AI Portfolio Assistant. Try typing “skills”, “projects”, “SAP”, “Azure”, “AWS”, or ask a full question.
-                </div>
-            </div>
+From enterprise integration to applied AI
+I spent three years at Accenture on the Canada Post Transformation Program, working on SAP integration. I built and supported the integration flows and APIs that moved data securely between SAP ERP and third-party systems, and handled testing, production support and documentation. That work taught me how real systems are connected, monitored and kept reliable.
 
-            <div class="input-row">
-                <input
-                    type="text"
-                    id="user-input"
-                    placeholder="Ask about Ramya's skills, projects, or experience..."
-                    onkeydown="handleEnter(event)"
-                >
-                <button onclick="sendMessage()">Ask AI</button>
-            </div>
+At Rowan University I'm completing my MS in Computer Science and working as a Graduate Research Assistant in AI and medical imaging. Outside research, I build applications with LLMs and retrieval-augmented generation, such as CloudPilot and the AI assistant on this site, and deploy them to the cloud.
 
-            <p class="hint">
-                Example: “Is Ramya a good fit for cloud internships?” or just type “projects”.
-            </p>
-        </div>
-    </div>
+Experience
 
-<script>
-async function sendMessage() {
-    const input = document.getElementById("user-input");
-    const chatBox = document.getElementById("chat-box");
-    const message = input.value.trim();
+Where I've worked
+Graduate Research Assistant
+Rowan University · Glassboro, NJ · AI & Medical Imaging
 
-    if (!message) {
-        return;
-    }
+Present
+Research applying artificial intelligence to medical imaging.
+AIMedical ImagingPython
+Packaged App Development Analyst · SAP Integration (ERP)
+Accenture · Canada Post Transformation Program · India
 
-    chatBox.innerHTML += `<div class="user-message">You: ${escapeHtml(message)}</div>`;
-    input.value = "";
+Jan 2022 – Dec 2024
+Built and maintained SAP integration flows (iFlows) and APIs for secure data exchange between SAP ERP and third-party systems over REST, SOAP and OData.
+Wrote Groovy scripts and XML/JSON mappings for message routing, data transformation and exception handling.
+Unit- and integration-tested 20+ services with Postman and automated validation checks before each release.
+Monitored production, resolved failures through log and root-cause analysis, and implemented role-based access control and secure authentication.
+Worked in Agile sprints with Git branching, code reviews and clear technical documentation.
+SAP Integration Suite (CPI)GroovyREST / SOAP / ODataXML / JSONSQLGit
+Projects
 
-    chatBox.innerHTML += `<div class="bot-message loading">Ramya AI is thinking...</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
+Things I've built
+Featured · AI / RAG
+CloudPilot: AI-Powered Cloud Troubleshooting Assistant
+A retrieval-augmented generation app that helps troubleshoot cloud, API, DevOps and runtime issues. It finds relevant entries in a troubleshooting knowledge base with Sentence Transformers embeddings and hybrid ranking (semantic similarity plus keyword, service and error-code signals), filters by relevance, and has Gemini write answers grounded in the retrieved sources. Out-of-scope questions are detected and declined.
 
-    try {
-        const response = await fetch("/api/chat", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ message: message })
-        });
+Retrieval evaluation: 5/5 test scenarios passed (Kubernetes CrashLoopBackOff, HTTP 503, Azure RDP, Docker restarts, off-topic rejection).
 
-        const data = await response.json();
-        if (data.redirect) {
-  window.open(data.redirect, "_blank");
-}
+PythonRAGSentence TransformersGemini APIStreamlit
+Live demo GitHub
+Question→Embed→Retrieve & rank→Gemini answer
+AI Interactive Portfolio
+This site. A Flask backend serves the page and a server-side AI assistant powered by Gemini, so the API key never reaches the browser. First deployed on an Ubuntu VPS with NGINX and SSL, now hosted on Render with a custom domain and HTTPS.
 
-        const loadingMessage = document.querySelector(".loading");
-        if (loadingMessage) {
-            loadingMessage.remove();
-        }
+FlaskGemini APINGINXLinuxRender
+GitHub →
+Order Processing Backend System
+Receives orders through a REST API, classifies them as Urgent, Normal or Risk in a Flask service, and routes them to Apache Kafka topics. All services run in Docker, with integration tests and SQL data-validation scripts.
 
-        chatBox.innerHTML += `<div class="bot-message">Ramya AI: ${escapeHtml(data.reply)}</div>`;
-    } catch (error) {
-        const loadingMessage = document.querySelector(".loading");
-        if (loadingMessage) {
-            loadingMessage.remove();
-        }
+PythonFlaskKafkaDockerSQL
+LLM Applications & Agent Workflows
+Rowan coursework on LLM agents that call tools and external APIs in a loop, RAG with embeddings and document retrieval, and evaluating whether agent output meets its goal reliably and testably.
 
-        chatBox.innerHTML += `<div class="bot-message">AI service is temporarily unavailable. Please try again later.</div>`;
-    }
+PythonLLMsRAGAgents
+Julius Silvert B2B Platform Redesign
+Audited a live B2B e-commerce platform and documented 42 defects across data integrity, workflows and pricing. Then built and deployed a redesigned front end with a live inventory dashboard and order builder.
 
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
+JavaScriptHTML/CSSPythonGitHub Pages
+Restaurant Database Management System
+Full-stack PHP and MySQL app for customers, orders, inventory and payments, with stored procedures, triggers and transactions to keep data consistent.
 
-function quickAsk(text) {
-    document.getElementById("user-input").value = text;
-    sendMessage();
-}
+PHPMySQLSQL
+Skills
 
-function handleEnter(event) {
-    if (event.key === "Enter") {
-        sendMessage();
-    }
-}
+Technical toolkit
+AI & LLMs
+RAG, semantic search, embeddings (Sentence Transformers), Gemini API, LLM agents, Streamlit
 
-function escapeHtml(text) {
-    const div = document.createElement("div");
-    div.innerText = text;
-    return div.innerHTML;
-}
-</script>
+Languages
+Python, SQL, JavaScript, PHP, Groovy, HTML, CSS
 
-</body>
-</html>
+Cloud & DevOps
+AWS, Microsoft Azure, Linux, NGINX, Docker, Apache Kafka, Render, Git/GitHub
+
+Enterprise Integration
+SAP Integration Suite (CPI), iFlows, REST, SOAP, OData, XML/JSON mappings
+
+Web & Databases
+Flask, REST APIs, MySQL, stored procedures, triggers, schema design
+
+Testing & Security
+Unit and integration testing, Postman, OAuth, SAML, role-based access control
+
+Education
+
+MS, Computer Science
+Rowan University, Glassboro, NJ · GPA 3.9/4.0
+
+Algorithms & Data Structures, Database Systems, Software Engineering, Distributed Systems, Cloud Computing
+
+B.Tech, Electronics & Communication Engineering
+Vignan University, India · 2022
+
+Certifications
+
+AWS Certified Solutions Architect – Associate
+2025
+
+Microsoft Azure Fundamentals (AZ-900)
+2025
+
+SAP Certified Associate – Integration Developer
+2024
+
+Publication
+
+A CPW-Fed Tri-Band Parasitic Patch Antenna for 5G, WLAN and Satellite Applications
+IEEE MAPCON 2024
+
+AI Assistant
+
+Ask my AI about my background
+It answers questions about my experience, research, projects and skills, using Gemini on a secure server-side API.
+
+Research CloudPilot Skills Experience Certifications Good fit?
+Hi! I'm Ramya's AI assistant. Ask me about her experience, research, projects or skills.
+e.g. What did Ramya build at Accenture?
+ Ask
+Let's connect
+I'm looking for Software Engineering, Cloud and AI roles.
+
+ramyagorantla786@gmail.com LinkedIn GitHub
+© 2026 Ramya Gorantla
