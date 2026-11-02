@@ -47,7 +47,7 @@
                 <div class="hero-links">
                     <a href="https://www.linkedin.com/in/ramya-gorantla-396429210" target="_blank" rel="noopener">LinkedIn</a>
                     <a href="https://github.com/ramyagorantla-dev" target="_blank" rel="noopener">GitHub</a>
-                    <a href="mailto:ramyagorantla2001@gmail.com">Email</a>
+                    <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ramyagorantla2001@gmail.com" target="_blank" rel="noopener">Email</a>
                 </div>
             </div>
             <div class="hero-card">
@@ -86,10 +86,10 @@
             <p class="section-label">About</p>
             <h2>From enterprise integration to applied AI</h2>
             <p class="lead">
-                I spent three years at Accenture on the Canada Post Transformation Program, working on SAP
-                integration. I built and supported the integration flows and APIs that moved data securely between
-                SAP ERP and third-party systems, and handled testing, production support and documentation.
-                That work taught me how real systems are connected, monitored and kept reliable.
+                I spent three years at Accenture as an SAP integration developer on the Canada Post Transformation
+                Program, a multi-year SAP modernization. I designed and supported SAP CPI iFlows on SAP BTP that
+                connected SAP ERP with third-party systems, and saw them through testing, go-live and post-go-live
+                incidents. That work taught me how real systems are connected, monitored and kept reliable.
             </p>
             <p class="lead">
                 At Rowan University I'm completing my MS in Computer Science and working as a Graduate Research
@@ -131,14 +131,16 @@
                         <span class="date">Jan 2022 – Dec 2024</span>
                     </div>
                     <ul>
-                        <li>Delivered SAP integration flows (iFlows) and APIs for Canada Post's enterprise transformation, connecting SAP ERP with third-party systems over REST, SOAP and OData.</li>
-                        <li>Wrote Groovy scripts and XML/JSON mappings for message routing, data transformation and exception handling.</li>
-                        <li>Tested 20+ integration services (unit and integration) with Postman and automated validation checks before each release.</li>
-                        <li>Supported live production systems: monitored message flows, traced failures through log and root-cause analysis, and delivered fixes.</li>
-                        <li>Secured integrations with role-based access control and secure authentication.</li>
-                        <li>Turned business requirements into technical specifications with functional analysts, and worked in Agile sprints with Git and code reviews.</li>
+                        <li>Developer on Canada Post's multi-year SAP modernization program, working with onshore teams, functional analysts and client stakeholders across several releases.</li>
+                        <li>Designed, built and maintained SAP CPI iFlows in SAP BTP Integration Suite, connecting SAP ERP with third-party systems.</li>
+                        <li>Configured IDoc, OData, REST and SOAP adapters, and built message mappings and Groovy scripts for data transformation and dynamic routing.</li>
+                        <li>Set up exception handling and error alerts in iFlows so failed messages were caught, logged and easy to reprocess.</li>
+                        <li>Worked with IDocs and SAP ERP components on data migration during the rollout, keeping data consistent between ERP and connected systems.</li>
+                        <li>Unit-tested 20+ integration flows with Postman before production and supported deployments in each release.</li>
+                        <li>Monitored interfaces after go-live, traced incidents and performance issues to the root cause, fixed them, and worked with vendors on cross-system issues.</li>
+                        <li>Turned business requirements into technical specifications and estimates, took part in code reviews and Git version control, helped manage SAP user access and roles, and documented interfaces for knowledge transfer.</li>
                     </ul>
-                    <div class="tags"><span>SAP Integration Suite (CPI)</span><span>Groovy</span><span>REST / SOAP / OData</span><span>XML / JSON</span><span>SQL</span><span>Git</span></div>
+                    <div class="tags"><span>SAP BTP</span><span>SAP Integration Suite (CPI)</span><span>IDoc</span><span>OData / REST / SOAP</span><span>Groovy</span><span>Message Mapping</span><span>Postman</span><span>Git</span></div>
                 </article>
             </div>
         </div>
@@ -181,9 +183,9 @@
                 </article>
 
                 <article class="project">
-                    <h3>Order Processing Backend System</h3>
-                    <p>Receives orders through a REST API, classifies them as Urgent, Normal or Risk in a Flask service, and routes them to Apache Kafka topics. All services run in Docker, with integration tests and SQL data-validation scripts.</p>
-                    <div class="tags"><span>Python</span><span>Flask</span><span>Kafka</span><span>Docker</span><span>SQL</span></div>
+                    <h3>AI-Based Order Processing Pipeline</h3>
+                    <p>An end-to-end pipeline that combines enterprise integration with ML. Orders come in through a REST API and are transformed and routed in SAP CPI. A Python ML service labels each one Urgent, Normal or Risk and sends it to the matching Kafka topic. Everything runs in Docker, with end-to-end tests and SQL validation for nulls, duplicates and transformation errors.</p>
+                    <div class="tags"><span>SAP CPI</span><span>Python ML</span><span>Flask</span><span>Kafka</span><span>Docker</span><span>SQL</span></div>
                 </article>
 
                 <article class="project">
@@ -193,9 +195,9 @@
                 </article>
 
                 <article class="project">
-                    <h3>Julius Silvert B2B Platform Redesign</h3>
-                    <p>Audited a live B2B e-commerce platform and documented 42 defects across data integrity, workflows and pricing. Then built and deployed a redesigned front end with a live inventory dashboard and order builder.</p>
-                    <div class="tags"><span>JavaScript</span><span>HTML/CSS</span><span>Python</span><span>GitHub Pages</span></div>
+                    <h3>Julius Silvert B2B Platform Audit &amp; Redesign</h3>
+                    <p>Audited the live B2B ordering platform of Julius Silvert, a food distributor that supplies restaurants, and documented 42 defects across data integrity, workflows and pricing. Then built and deployed a redesigned front end with a live inventory dashboard, an order builder, and a chatbot that helps chefs find products.</p>
+                    <div class="tags"><span>QA &amp; Audit</span><span>JavaScript</span><span>HTML/CSS</span><span>Chatbot</span><span>GitHub Pages</span></div>
                 </article>
 
                 <article class="project">
@@ -213,12 +215,12 @@
             <p class="section-label">Skills</p>
             <h2>Technical toolkit</h2>
             <div class="skills-grid">
-                <div class="skill-group"><h4>AI &amp; LLMs</h4><p>RAG, semantic search, embeddings (Sentence Transformers), Gemini API, LLM agents, Streamlit</p></div>
+                <div class="skill-group"><h4>AI &amp; LLMs</h4><p>RAG, embeddings &amp; semantic search, LLM agents, prompt engineering, Gemini API, Python ML classification, Pandas, NumPy, Streamlit</p></div>
                 <div class="skill-group"><h4>Languages</h4><p>Python, SQL, JavaScript, PHP, Groovy, HTML, CSS</p></div>
                 <div class="skill-group"><h4>Cloud &amp; DevOps</h4><p>AWS, Microsoft Azure, Linux, NGINX, Docker, Apache Kafka, Render, Git/GitHub</p></div>
-                <div class="skill-group"><h4>SAP BTP &amp; ERP Integration</h4><p>SAP BTP, SAP Integration Suite (CPI), SAP S/4HANA &amp; ERP integration, iFlows, REST, SOAP, OData, XML/JSON mappings</p></div>
+                <div class="skill-group"><h4>SAP BTP &amp; ERP Integration</h4><p>SAP BTP Integration Suite, SAP CPI / iFlows, SAP ERP, IDocs, SAP Fiori, data migration, IDoc / OData / REST / SOAP adapters, Groovy, message mapping</p></div>
                 <div class="skill-group"><h4>Web &amp; Databases</h4><p>Flask, REST APIs, MySQL, stored procedures, triggers, schema design</p></div>
-                <div class="skill-group"><h4>Testing &amp; Security</h4><p>Unit and integration testing, Postman, OAuth, SAML, role-based access control</p></div>
+                <div class="skill-group"><h4>Testing &amp; Support</h4><p>Postman, API testing, UAT, root cause analysis, post-go-live support, SAP access &amp; role management</p></div>
             </div>
         </div>
     </section>
@@ -230,12 +232,12 @@
                 <p class="section-label">Education</p>
                 <div class="cred">
                     <h3>MS, Computer Science</h3>
-                    <p>Rowan University, Glassboro, NJ · GPA 3.9/4.0</p>
-                    <p class="muted">Algorithms &amp; Data Structures, Database Systems, Software Engineering, Distributed Systems, Cloud Computing</p>
+                    <p>Rowan University, Glassboro, NJ · GPA 3.9/4.0 · Expected Dec 2026</p>
+                    <p class="muted">AI &amp; LLMs, Machine Learning, Cloud Computing, Distributed Systems, Database Systems, Software Engineering</p>
                 </div>
                 <div class="cred">
                     <h3>B.Tech, Electronics &amp; Communication Engineering</h3>
-                    <p>Vignan University, India · 2022</p>
+                    <p>Vignan University, India · May 2022</p>
                 </div>
             </div>
             <div>
@@ -288,7 +290,7 @@
             <p>I'm looking for Software Engineering, AI, Cloud and SAP BTP / ERP roles.</p>
         </div>
         <div class="footer-links">
-            <a href="mailto:ramyagorantla2001@gmail.com">ramyagorantla2001@gmail.com</a>
+            <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=ramyagorantla2001@gmail.com" target="_blank" rel="noopener">ramyagorantla2001@gmail.com</a>
             <a href="https://www.linkedin.com/in/ramya-gorantla-396429210" target="_blank" rel="noopener">LinkedIn</a>
             <a href="https://github.com/ramyagorantla-dev" target="_blank" rel="noopener">GitHub</a>
         </div>
