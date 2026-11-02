@@ -36,12 +36,13 @@ Current role:
   to medical imaging. No further details are available yet; do not invent methods, datasets, or results.
 
 Experience:
-- Packaged App Development Analyst, SAP Integration (ERP), Accenture, Canada Post Transformation Program,
-  India, Jan 2022 - Dec 2024. Built and maintained SAP integration flows (iFlows) and APIs for secure data
-  exchange between SAP ERP and third-party systems (REST, SOAP, OData); Groovy scripting and XML/JSON mappings
-  for message routing, transformation, and exception handling; unit and integration testing of 20+ services with Postman;
-  SQL for validation and reporting; production monitoring and root-cause analysis; role-based access control
-  and secure authentication; Git, code reviews, Agile sprints, technical documentation.
+- Packaged App Development Analyst (ERP), Accenture, Canada Post Transformation Program (a multi-year SAP
+  modernization), India, Jan 2022 - Dec 2024. SAP integration developer: designed, built and maintained SAP CPI
+  iFlows in SAP BTP Integration Suite connecting SAP ERP with third-party systems; configured IDoc, OData, REST and
+  SOAP adapters; message mappings and Groovy scripts for transformation and dynamic routing; exception handling and
+  error alerts; IDocs and data migration during rollout; requirements sessions, technical specs and estimates;
+  unit-tested 20+ integration flows with Postman; post-go-live monitoring, incident root-cause analysis and fixes;
+  worked with vendors on cross-system issues; code reviews, Git, SAP user access and role management; documentation.
 
 Projects:
 - CloudPilot: AI-powered cloud troubleshooting assistant using retrieval-augmented generation (RAG).
@@ -51,24 +52,28 @@ Projects:
   scenarios. Live: {CLOUDPILOT_URL}  GitHub: https://github.com/ramyagorantla-dev/CloudPilot
 - AI Interactive Portfolio (this website): Flask backend with a server-side Gemini assistant; originally
   deployed on an Ubuntu VPS with NGINX and SSL, now hosted on Render with a custom domain and HTTPS.
-- Order Processing Backend System: Python/Flask REST API, orders classified Urgent/Normal/Risk and routed
-  to Apache Kafka topics, Docker, integration tests, SQL validation scripts.
+- AI-Based Order Processing Pipeline: orders enter via REST API, are transformed and routed in SAP CPI, then a
+  Python ML service (Flask microservice) classifies each as Urgent, Normal or Risk and routes it to the matching Kafka
+  topic; Docker, end-to-end tests, SQL validation for nulls, duplicates and transformation errors.
 - LLM Applications and Agent Workflows (Rowan coursework): tool-calling agents, RAG with embeddings,
   evaluating agent output reliability.
-- Julius Silvert B2B Platform Redesign: audited a live B2B e-commerce platform (42 defects documented) and
-  built a redesigned front end with a live inventory dashboard and order builder (JavaScript, HTML, CSS).
+- Julius Silvert B2B Platform Audit and Redesign: audited the live B2B ordering site of Julius Silvert (food
+  distributor serving restaurants), documented 42 defects across data integrity, workflows and pricing, then built and
+  deployed a redesigned front end with an inventory dashboard, order builder, and a chatbot that helps chefs find
+  products (JavaScript, HTML, CSS, GitHub Pages).
 - Restaurant Database Management System: PHP and MySQL, stored procedures, triggers, transactions.
 
 Skills:
 Languages: Python, SQL, JavaScript, PHP, Groovy, HTML, CSS.
-SAP: SAP BTP, SAP Integration Suite (CPI), SAP S/4HANA and ERP integration, iFlows, REST, SOAP, OData, XML/JSON. Web: Flask, REST APIs.
+SAP: SAP BTP Integration Suite, SAP CPI iFlows, SAP ERP, IDocs, SAP Fiori, data migration, adapters (IDoc, OData, REST, SOAP), Groovy, message mapping, REST, SOAP, OData, XML/JSON. Web: Flask, REST APIs.
 AI: RAG, semantic search, Sentence Transformers, Gemini API, LLM agents, Streamlit.
 Cloud/DevOps: AWS, Microsoft Azure, Docker, Apache Kafka, Linux, NGINX, CI/CD, Git/GitHub.
 Databases: MySQL, stored procedures, triggers, schema design. Testing: unit, integration, Postman.
 Security: OAuth, SAML, role-based access control.
 
-Education: MS Computer Science, Rowan University (GPA 3.9/4.0). B.Tech Electronics and Communication
-Engineering, Vignan University, India (2022).
+Education: MS Computer Science, Rowan University (GPA 3.9/4.0, expected Dec 2026; coursework in AI and LLMs,
+Machine Learning, Cloud Computing, Distributed Systems). B.Tech Electronics and Communication Engineering,
+Vignan University, India (May 2022).
 
 Certifications: AWS Certified Solutions Architect - Associate (2025); Microsoft Azure Fundamentals AZ-900 (2025);
 SAP Certified Associate - Integration Developer (2024).
@@ -104,12 +109,12 @@ FALLBACK_ANSWERS = {
     "email": f"You can contact Ramya at {CONTACT_EMAIL}.",
     "contact": f"You can reach Ramya at {CONTACT_EMAIL}, on LinkedIn ({LINKEDIN_URL}), or on GitHub ({GITHUB_URL}).",
     "skills": "**Ramya's key skills:**\n* **Languages:** Python, SQL, JavaScript, PHP, Groovy\n* **AI & LLMs:** RAG, semantic search, Sentence Transformers, Gemini API, LLM agents\n* **Enterprise integration:** SAP Integration Suite (CPI), REST, SOAP, OData, Groovy\n* **Cloud & DevOps:** AWS, Azure, Docker, Kafka, Linux, NGINX, Git, CI/CD\n* **Testing & security:** unit/integration testing, Postman, OAuth, SAML, RBAC",
-    "projects": "**Ramya's projects:**\n* **CloudPilot**: RAG-based cloud troubleshooting assistant (Sentence Transformers, Gemini, Streamlit)\n* **AI Interactive Portfolio**: this site, Flask + Gemini on Render\n* **Order Processing Backend**: Flask, Kafka, Docker\n* **LLM Applications & Agent Workflows**: Rowan coursework\n* **Julius Silvert B2B Platform Redesign**\n* **Restaurant Database Management System**: PHP, MySQL",
-    "experience": "**Graduate Research Assistant, Rowan University (present):** AI and medical imaging research.\n\n**Packaged App Development Analyst, SAP Integration, Accenture (Jan 2022 - Dec 2024):** 3 years building SAP integration flows and APIs between SAP ERP and third-party systems (REST, SOAP, OData), with Groovy scripting, testing of 20+ services, production support, and RBAC security.",
+    "projects": "**Ramya's projects:**\n* **CloudPilot**: RAG-based cloud troubleshooting assistant (Sentence Transformers, Gemini, Streamlit)\n* **AI Interactive Portfolio**: this site, Flask + Gemini on Render\n* **AI-Based Order Processing Pipeline**: SAP CPI, Python ML, Kafka, Docker\n* **LLM Applications & Agent Workflows**: Rowan coursework\n* **Julius Silvert B2B Platform Audit & Redesign**: 42 defects found, redesigned front end with a product-finder chatbot\n* **Restaurant Database Management System**: PHP, MySQL",
+    "experience": "**Graduate Research Assistant, Rowan University (present):** AI and medical imaging research.\n\n**Packaged App Development Analyst, SAP Integration, Accenture (Jan 2022 - Dec 2024):** 3 years on Canada Post's SAP modernization: designed and supported SAP CPI iFlows on SAP BTP Integration Suite connecting SAP ERP with third-party systems (IDoc, OData, REST, SOAP), with Groovy scripts, message mappings, exception handling, testing of 20+ flows, and post-go-live support.",
     "research": "Ramya is a Graduate Research Assistant at Rowan University, working on artificial intelligence for medical imaging.",
     "education": "Ramya is pursuing an MS in Computer Science at Rowan University (GPA 3.9/4.0). She holds a B.Tech in Electronics and Communication Engineering from Vignan University, India (2022).",
     "cloudpilot": f"**CloudPilot** is Ramya's AI-powered cloud troubleshooting assistant. It uses Sentence Transformers embeddings and hybrid ranking to retrieve relevant entries from a troubleshooting knowledge base, then Gemini generates answers grounded in those sources (RAG). Built with Python and Streamlit; retrieval evaluation passed 5/5 scenarios. Try it: {CLOUDPILOT_URL}",
-    "sap": "At Accenture, Ramya spent 3 years on the Canada Post Transformation Program building integrations between SAP ERP and third-party systems over REST, SOAP, and OData. She is an SAP Certified Associate - Integration Developer.",
+    "sap": "At Accenture, Ramya spent 3 years on the Canada Post Transformation Program as an SAP integration developer, building SAP CPI iFlows on SAP BTP Integration Suite that connected SAP ERP with third-party systems over IDoc, OData, REST, and SOAP. She is an SAP Certified Associate - Integration Developer.",
     "aws": "Ramya is an AWS Certified Solutions Architect - Associate (2025).",
     "azure": "Ramya holds Microsoft Azure Fundamentals (AZ-900, 2025).",
     "publication": "Ramya co-authored an IEEE MAPCON 2024 paper: \"A CPW-Fed Tri-Band Parasitic Patch Antenna for 5G, WLAN and Satellite Applications.\""
