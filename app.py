@@ -10,7 +10,7 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-CONTACT_EMAIL = "ramyagorantla786@gmail.com"
+CONTACT_EMAIL = "ramyagorantla2001@gmail.com"
 LINKEDIN_URL = "https://www.linkedin.com/in/ramya-gorantla-396429210"
 GITHUB_URL = "https://github.com/ramyagorantla-dev"
 CLOUDPILOT_URL = "https://cloudpilot.streamlit.app"
@@ -29,7 +29,7 @@ Summary:
 MS Computer Science student at Rowan University (Glassboro, NJ), GPA 3.9/4.0, and currently a
 Graduate Research Assistant at Rowan working on AI and medical imaging. Focus areas: Python, AI/LLM and
 RAG applications, and cloud (AWS). Brings 3 years of enterprise SAP integration (ERP) experience from Accenture.
-Looking for Software Engineering, Cloud, and AI roles. Do not describe her as a "Backend Software Engineer".
+Open to Software Engineering, AI, Cloud, and SAP BTP / ERP roles. Do not describe her as a "Backend Software Engineer".
 
 Current role:
 - Graduate Research Assistant, Rowan University (present): research applying artificial intelligence
@@ -61,7 +61,7 @@ Projects:
 
 Skills:
 Languages: Python, SQL, JavaScript, PHP, Groovy, HTML, CSS.
-Enterprise integration: SAP Integration Suite (CPI), iFlows, REST, SOAP, OData, XML/JSON. Web: Flask, REST APIs.
+SAP: SAP BTP, SAP Integration Suite (CPI), SAP S/4HANA and ERP integration, iFlows, REST, SOAP, OData, XML/JSON. Web: Flask, REST APIs.
 AI: RAG, semantic search, Sentence Transformers, Gemini API, LLM agents, Streamlit.
 Cloud/DevOps: AWS, Microsoft Azure, Docker, Apache Kafka, Linux, NGINX, CI/CD, Git/GitHub.
 Databases: MySQL, stored procedures, triggers, schema design. Testing: unit, integration, Postman.
@@ -90,7 +90,7 @@ VALID_TOPICS = [
     "certif", "education", "degree", "study", "sap", "azure", "aws", "ai", "ml", "llm", "rag",
     "cloud", "cloudpilot", "research", "medical", "imaging", "python", "backend", "api",
     "accenture", "rowan", "gpa", "resume", "summary", "contact", "email", "hire", "fit",
-    "intern", "github", "linkedin", "publication", "paper", "ieee", "location", "kafka",
+    "intern", "btp", "erp", "s4hana", "github", "linkedin", "publication", "paper", "ieee", "location", "kafka",
     "docker", "flask", "sql", "strength", "about", "background", "portfolio"
 ]
 
@@ -182,7 +182,7 @@ def chat():
     except Exception as e:
         print("FULL SERVER ERROR:", str(e))
         return jsonify({
-            "reply": f"Sorry, something went wrong. For support, please contact Ramya at ramyagorantla786@gmail.com."
+            "reply": f"Sorry, something went wrong. For support, please contact Ramya at ramyagorantla2001@gmail.com."
         })
 
 @app.route("/health")
