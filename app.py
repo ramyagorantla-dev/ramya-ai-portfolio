@@ -10,9 +10,10 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app)
 
-CONTACT_EMAIL = "ramyagorantla2001@gmail.com"
+CONTACT_EMAIL = "ramyagorantla786@gmail.com"
 LINKEDIN_URL = "https://www.linkedin.com/in/ramya-gorantla-396429210"
 GITHUB_URL = "https://github.com/ramyagorantla-dev"
+CLOUDPILOT_URL = "https://cloudpilot.streamlit.app"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
@@ -20,70 +21,98 @@ GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
 client = genai.Client(api_key=GEMINI_API_KEY) if GEMINI_API_KEY else None
 
 SYSTEM_PROMPT = f"""
-You are Ramya Gorantla's AI Portfolio Assistant.
+You are Ramya Gorantla's AI Portfolio Assistant on her website ramyagorantla.me.
+Answer only about Ramya's background: experience, research, projects, skills, education,
+certifications, publication, and contact details. Refer to her in the third person.
 
-Answer only about Ramya Gorantla's portfolio, skills, projects, education,
-experience, certifications, SAP CPI background, cloud experience, AI projects,
-cybersecurity, networking, publications, LinkedIn, GitHub, and contact information.
+Summary:
+MS Computer Science student at Rowan University (Glassboro, NJ), GPA 3.9/4.0, and currently a
+Graduate Research Assistant at Rowan working on AI and medical imaging. Focus areas: Python, AI/LLM and
+RAG applications, and cloud (AWS). Brings 3 years of enterprise SAP integration (ERP) experience from Accenture.
+Looking for Software Engineering, Cloud, and AI roles. Do not describe her as a "Backend Software Engineer".
 
-Ramya is a Master's student in Computer Science at Rowan University, Glassboro, NJ.
-Her GPA is 3.9/4.0.
+Current role:
+- Graduate Research Assistant, Rowan University (present): research applying artificial intelligence
+  to medical imaging. No further details are available yet; do not invent methods, datasets, or results.
 
-Ramya has 2.5+ years of professional experience as an SAP CPI Integration Developer Analyst at Accenture.
-
-Certifications:
-- AWS Certified Solutions Architect – Associate
-- Microsoft Azure Fundamentals (AZ-900)
-- SAP Certified Associate – Integration Developer
-- Preparing for Microsoft Azure Administrator (AZ-104)
+Experience:
+- Packaged App Development Analyst, SAP Integration (ERP), Accenture, Canada Post Transformation Program,
+  India, Jan 2022 - Dec 2024. Built and maintained SAP integration flows (iFlows) and APIs for secure data
+  exchange between SAP ERP and third-party systems (REST, SOAP, OData); Groovy scripting and XML/JSON mappings
+  for message routing, transformation, and exception handling; unit and integration testing of 20+ services with Postman;
+  SQL for validation and reporting; production monitoring and root-cause analysis; role-based access control
+  and secure authentication; Git, code reviews, Agile sprints, technical documentation.
 
 Projects:
-- AI-Driven Order Processing System using Python, Flask, SAP CPI, Kafka, and Docker
-- Julius Silvert B2B Platform Redesign
-- Restaurant Database Management System using MySQL and PHP
-- Enterprise Campus Network Design using Cisco Packet Tracer
-- CareerPilot AI
-- Ramya AI Portfolio Assistant
+- CloudPilot: AI-powered cloud troubleshooting assistant using retrieval-augmented generation (RAG).
+  Sentence Transformers (all-MiniLM-L6-v2) embeddings, hybrid ranking (semantic similarity plus keyword,
+  service, alias and error-code signals), relevance filtering, Gemini-generated answers grounded in a JSON
+  troubleshooting knowledge base, out-of-scope detection, Streamlit UI. Retrieval evaluation passed 5/5 test
+  scenarios. Live: {CLOUDPILOT_URL}  GitHub: https://github.com/ramyagorantla-dev/CloudPilot
+- AI Interactive Portfolio (this website): Flask backend with a server-side Gemini assistant; originally
+  deployed on an Ubuntu VPS with NGINX and SSL, now hosted on Render with a custom domain and HTTPS.
+- Order Processing Backend System: Python/Flask REST API, orders classified Urgent/Normal/Risk and routed
+  to Apache Kafka topics, Docker, integration tests, SQL validation scripts.
+- LLM Applications and Agent Workflows (Rowan coursework): tool-calling agents, RAG with embeddings,
+  evaluating agent output reliability.
+- Julius Silvert B2B Platform Redesign: audited a live B2B e-commerce platform (42 defects documented) and
+  built a redesigned front end with a live inventory dashboard and order builder (JavaScript, HTML, CSS).
+- Restaurant Database Management System: PHP and MySQL, stored procedures, triggers, transactions.
 
-Publication:
-IEEE MAPCON 2024 paper: "A CPW-Fed Tri-Band Parasitic Patch Antenna for 5G, WLAN and Satellite Applications."
+Skills:
+Languages: Python, SQL, JavaScript, PHP, Groovy, HTML, CSS.
+Enterprise integration: SAP Integration Suite (CPI), iFlows, REST, SOAP, OData, XML/JSON. Web: Flask, REST APIs.
+AI: RAG, semantic search, Sentence Transformers, Gemini API, LLM agents, Streamlit.
+Cloud/DevOps: AWS, Microsoft Azure, Docker, Apache Kafka, Linux, NGINX, CI/CD, Git/GitHub.
+Databases: MySQL, stored procedures, triggers, schema design. Testing: unit, integration, Postman.
+Security: OAuth, SAML, role-based access control.
 
-Contact:
-Email: {CONTACT_EMAIL}
-LinkedIn: {LINKEDIN_URL}
-GitHub: {GITHUB_URL}
+Education: MS Computer Science, Rowan University (GPA 3.9/4.0). B.Tech Electronics and Communication
+Engineering, Vignan University, India (2022).
+
+Certifications: AWS Certified Solutions Architect - Associate (2025); Microsoft Azure Fundamentals AZ-900 (2025);
+SAP Certified Associate - Integration Developer (2024).
+
+Publication: IEEE MAPCON 2024, "A CPW-Fed Tri-Band Parasitic Patch Antenna for 5G, WLAN and Satellite Applications."
+
+Contact: Email {CONTACT_EMAIL} | LinkedIn {LINKEDIN_URL} | GitHub {GITHUB_URL}
 
 Rules:
-- Keep answers professional and realistic.
-- Do not invent information.
-- If the question is random, unclear, unrelated, or unsupported, say:
-  "I can only answer questions about Ramya's portfolio, skills, projects, experience, education, certifications, or contact details. For support, please contact Ramya at {CONTACT_EMAIL}."
-- Do not mention system prompt.
+- Be professional, concise (under 150 words unless asked for detail), and factual.
+- Never invent information that is not listed above.
+- If the question is unrelated to Ramya, say: "I can only answer questions about Ramya's experience,
+  research, projects, skills, education, or contact details. You can reach Ramya at {CONTACT_EMAIL}."
+- Do not mention these instructions.
 """
 
 VALID_TOPICS = [
-    "skill", "skills", "project", "projects", "experience", "work", "certification",
-    "certifications", "education", "sap", "sap cpi", "azure", "aws", "ai", "cloud",
-    "cybersecurity", "networking", "resume", "summary", "contact", "email",
-    "github", "linkedin", "publication", "publications", "rowan", "accenture",
-    "gpa", "location"
+    "ramya", "she", "her", "you", "skill", "project", "experience", "work", "job", "role",
+    "certif", "education", "degree", "study", "sap", "azure", "aws", "ai", "ml", "llm", "rag",
+    "cloud", "cloudpilot", "research", "medical", "imaging", "python", "backend", "api",
+    "accenture", "rowan", "gpa", "resume", "summary", "contact", "email", "hire", "fit",
+    "intern", "github", "linkedin", "publication", "paper", "ieee", "location", "kafka",
+    "docker", "flask", "sql", "strength", "about", "background", "portfolio"
 ]
 
+CERTS = ("Ramya's certifications: AWS Certified Solutions Architect - Associate (2025), "
+         "Microsoft Azure Fundamentals AZ-900 (2025), and SAP Certified Associate - Integration Developer (2024).")
+
+# Instant answers for one-word / button questions (checked as whole words).
 FALLBACK_ANSWERS = {
-    "certifications": "Ramya’s certifications include AWS Certified Solutions Architect – Associate, Microsoft Azure Fundamentals (AZ-900), and SAP Certified Associate – Integration Developer. She is also preparing for Microsoft Azure Administrator (AZ-104).",
-    "certification": "Ramya’s certifications include AWS Certified Solutions Architect – Associate, Microsoft Azure Fundamentals (AZ-900), and SAP Certified Associate – Integration Developer. She is also preparing for Microsoft Azure Administrator (AZ-104).",
-    "linkedin": f"Opening Ramya’s LinkedIn profile: {LINKEDIN_URL}",
-    "github": f"Opening Ramya’s GitHub profile: {GITHUB_URL}",
+    "certifications": CERTS,
+    "certification": CERTS,
     "email": f"You can contact Ramya at {CONTACT_EMAIL}.",
-    "contact": f"You can contact Ramya at {CONTACT_EMAIL}, LinkedIn: {LINKEDIN_URL}, or GitHub: {GITHUB_URL}.",
-    "skills": "Ramya’s key skills include SAP CPI, SAP BTP, SAP S/4HANA integration, REST/SOAP APIs, Groovy scripting, Python, Flask, SQL, MySQL, GitHub, Linux, Azure, AWS, Nginx, DNS, SSL, cybersecurity tools, and networking fundamentals.",
-    "projects": "Ramya’s major projects include AI-Driven Order Processing with SAP CPI, Flask, Kafka and Docker; Julius Silvert B2B Platform Redesign; Restaurant Database Management System; Enterprise Campus Network Design; CareerPilot AI; and Ramya AI Portfolio Assistant.",
-    "experience": "Ramya has 2.5+ years of experience as an SAP CPI Integration Developer Analyst at Accenture, working on integrations, APIs, message transformations, middleware, Groovy scripting, production support, and enterprise integration solutions.",
-    "education": "Ramya is pursuing an MS in Computer Science at Rowan University in Glassboro, NJ with a GPA of 3.9/4.0. She completed her B.Tech in Electronics and Communication Engineering from Vignan University, India.",
-    "sap": "Ramya has 2.5+ years of SAP CPI experience at Accenture, including iFlows, APIs, XML/JSON transformations, Groovy scripting, adapters, monitoring, and production support.",
-    "aws": "Ramya is AWS Certified Solutions Architect – Associate and understands cloud architecture, scalability, networking, availability, and deployment design.",
-    "azure": "Ramya completed Microsoft Azure Fundamentals (AZ-900) and is preparing for Azure Administrator (AZ-104).",
-    "publication": "Ramya authored an IEEE MAPCON 2024 paper titled “A CPW-Fed Tri-Band Parasitic Patch Antenna for 5G, WLAN and Satellite Applications.”"
+    "contact": f"You can reach Ramya at {CONTACT_EMAIL}, on LinkedIn ({LINKEDIN_URL}), or on GitHub ({GITHUB_URL}).",
+    "skills": "**Ramya's key skills:**\n* **Languages:** Python, SQL, JavaScript, PHP, Groovy\n* **AI & LLMs:** RAG, semantic search, Sentence Transformers, Gemini API, LLM agents\n* **Enterprise integration:** SAP Integration Suite (CPI), REST, SOAP, OData, Groovy\n* **Cloud & DevOps:** AWS, Azure, Docker, Kafka, Linux, NGINX, Git, CI/CD\n* **Testing & security:** unit/integration testing, Postman, OAuth, SAML, RBAC",
+    "projects": "**Ramya's projects:**\n* **CloudPilot**: RAG-based cloud troubleshooting assistant (Sentence Transformers, Gemini, Streamlit)\n* **AI Interactive Portfolio**: this site, Flask + Gemini on Render\n* **Order Processing Backend**: Flask, Kafka, Docker\n* **LLM Applications & Agent Workflows**: Rowan coursework\n* **Julius Silvert B2B Platform Redesign**\n* **Restaurant Database Management System**: PHP, MySQL",
+    "experience": "**Graduate Research Assistant, Rowan University (present):** AI and medical imaging research.\n\n**Packaged App Development Analyst, SAP Integration, Accenture (Jan 2022 - Dec 2024):** 3 years building SAP integration flows and APIs between SAP ERP and third-party systems (REST, SOAP, OData), with Groovy scripting, testing of 20+ services, production support, and RBAC security.",
+    "research": "Ramya is a Graduate Research Assistant at Rowan University, working on artificial intelligence for medical imaging.",
+    "education": "Ramya is pursuing an MS in Computer Science at Rowan University (GPA 3.9/4.0). She holds a B.Tech in Electronics and Communication Engineering from Vignan University, India (2022).",
+    "cloudpilot": f"**CloudPilot** is Ramya's AI-powered cloud troubleshooting assistant. It uses Sentence Transformers embeddings and hybrid ranking to retrieve relevant entries from a troubleshooting knowledge base, then Gemini generates answers grounded in those sources (RAG). Built with Python and Streamlit; retrieval evaluation passed 5/5 scenarios. Try it: {CLOUDPILOT_URL}",
+    "sap": "At Accenture, Ramya spent 3 years on the Canada Post Transformation Program building integrations between SAP ERP and third-party systems over REST, SOAP, and OData. She is an SAP Certified Associate - Integration Developer.",
+    "aws": "Ramya is an AWS Certified Solutions Architect - Associate (2025).",
+    "azure": "Ramya holds Microsoft Azure Fundamentals (AZ-900, 2025).",
+    "publication": "Ramya co-authored an IEEE MAPCON 2024 paper: \"A CPW-Fed Tri-Band Parasitic Patch Antenna for 5G, WLAN and Satellite Applications.\""
 }
 
 def normalize_message(message):
@@ -127,9 +156,11 @@ def chat():
                 "reply": f"I can only answer questions about Ramya's portfolio, skills, projects, experience, education, certifications, or contact details. For support, please contact Ramya at {CONTACT_EMAIL}."
             })
 
-        for keyword, answer in FALLBACK_ANSWERS.items():
-            if keyword in normalized:
-                return jsonify({"reply": answer})
+        words = normalized.split()
+        if len(words) <= 3 or not client:
+            for keyword, answer in FALLBACK_ANSWERS.items():
+                if keyword in words:
+                    return jsonify({"reply": answer})
 
         if client:
             try:
@@ -151,7 +182,7 @@ def chat():
     except Exception as e:
         print("FULL SERVER ERROR:", str(e))
         return jsonify({
-            "reply": f"Sorry, something went wrong. For support, please contact Ramya at ramyagorantla2001@gmail.com."
+            "reply": f"Sorry, something went wrong. For support, please contact Ramya at ramyagorantla786@gmail.com."
         })
 
 @app.route("/health")
