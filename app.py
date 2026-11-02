@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
-import google.generativeai as genai
+from google import genai
 import os
 import re
 
@@ -16,8 +16,8 @@ GITHUB_URL = "https://github.com/ramyagorantla-dev"
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash")
+client = genai.Client(api_key=GEMINI_API_KEY) if GEMINI_API_KEY else None
 
 SYSTEM_PROMPT = f"""
 You are Ramya Gorantla's AI Portfolio Assistant.
@@ -131,11 +131,11 @@ def chat():
             if keyword in normalized:
                 return jsonify({"reply": answer})
 
-        if GEMINI_API_KEY:
+        if client:
             try:
-                model = genai.GenerativeModel("gemini-1.5-flash-latest")
-                response = model.generate_content(
-                    SYSTEM_PROMPT + "\n\nVisitor question: " + user_message
+                response = client.models.generate_content(
+                    model=GEMINI_MODEL,
+                    contents=SYSTEM_PROMPT + "\n\nVisitor question: " + user_message
                 )
 
                 if response and hasattr(response, "text") and response.text:
